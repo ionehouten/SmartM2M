@@ -1,0 +1,12 @@
+upstream backend {
+    least_conn;
+    {% for item in backend_private_ip %}
+        server {{ item }};
+    {% endfor %}
+}
+
+server {
+    location / {
+        proxy_pass http://backend;
+    }
+}

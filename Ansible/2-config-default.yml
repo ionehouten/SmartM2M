@@ -1,0 +1,29 @@
+# Author: Iwan Setiawan (ione.thea27@gmail.com)
+# Date: 2023-10-27
+# Description: Config Nginx
+# Note:
+#
+#
+#
+- hosts: backend
+  vars:
+    user: devops
+    group: devops
+  tasks:
+    - name: Generate Nginx conf template
+      template:
+        src: default.j2
+        dest: /etc/nginx/sites-available/default
+      become: yes
+    - name: Set default index page
+      ansible.builtin.copy:
+        src: files/index.html
+        dest: /var/www/html/index.html
+      become: yes
+    - name: Restart nginx
+      service:
+        name: nginx
+        state: restarted
+      become: yes
+    
+      

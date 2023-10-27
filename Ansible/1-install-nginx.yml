@@ -1,0 +1,30 @@
+# Author: Iwan Setiawan (ione.thea27@gmail.com)
+# Date: 2023-10-27
+# Description: Install Nginx
+# Note:
+#
+#
+#
+- hosts: all
+  vars:
+    user: devops
+    group: devops
+  tasks:
+    - name: Update apt
+      become: yes
+      command: apt update
+    - name: Set timezone
+      command: timedatectl set-timezone Asia/Jakarta
+      become: yes
+    - name: Install nginx latest version
+      apt: name=nginx state=latest
+      become: yes
+    - name: start nginx
+      service:
+          name: nginx
+          state: started
+      register: nginx_status
+      become: yes
+    - debug: var=nginx_status
+    
+      

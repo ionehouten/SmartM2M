@@ -1,0 +1,6 @@
+# group_vars/development
+---
+env: development
+backend_private_ip :
+  - 10.128.0.13
+  - 10.128.0.14

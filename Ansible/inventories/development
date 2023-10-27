@@ -1,0 +1,13 @@
+# inventories/development
+
+[loadbalancer]
+34.72.133.21 ansible_ssh_user=devops ansible_ssh_private_key_file=/home/devops/.ssh/id_rsa
+
+[backend]
+34.172.26.142 ansible_ssh_user=devops ansible_ssh_private_key_file=/home/devops/.ssh/id_rsa
+34.41.114.204 ansible_ssh_user=devops ansible_ssh_private_key_file=/home/devops/.ssh/id_rsa
+
+
+[development:children]
+loadbalancer
+backend

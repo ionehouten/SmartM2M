@@ -1,0 +1,27 @@
+# Author: Iwan Setiawan (ione.thea27@gmail.com)
+# Date: 2023-10-27
+# Description: Config Loadbalancer
+# Note:
+#
+#
+#
+- hosts: loadbalancer
+  tasks:
+    - name: Generate Nginx conf template
+      template:
+        src: loadbalancer.conf.j2
+        dest: /etc/nginx/conf.d/loadbalancer.conf
+      become: yes
+
+    - name: Remove default sites enbled
+      file:
+        path: "/etc/nginx/sites-enabled/default"
+        state: absent
+   
+    - name: Restart nginx
+      service:
+        name: nginx
+        state: restarted
+      become: yes
+    
+      

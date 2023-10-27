@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-app
+  namespace: default
+  labels:
+    app : smartm2m
+spec:
+  selector:
+    matchLabels:
+      app : smartm2m
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app : smartm2m
+    spec:
+      containers:
+      - name: app
+        image: nginx:1.11.10-alpine
+        ports:
+        - containerPort: 80
