@@ -26,6 +26,8 @@ ansible-playbook -i inventories/development 3-config-loadbalancer.yml
 - Backend 1     : [http://34.172.26.142/](http://34.172.26.142/)
 - Backend 2     : [http://34.41.114.204/](http://34.41.114.204/)
 
- 
+ > Sorry, I have disabled the demo link
+Because after 7 days this test was sent, there was no response or contact regarding the results of this test.
+Thank You
 
  
